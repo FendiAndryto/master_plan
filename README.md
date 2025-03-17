@@ -31,8 +31,11 @@ Pada langkah ini, setiap tugas ditampilkan dalam bentuk **TextFormField** dan da
   - Method ini digunakan untuk menginisialisasi `ScrollController`.
   - Menambahkan listener untuk menghapus fokus dari semua input teks ketika pengguna menggulir daftar.
 - **Langkah 13 (`dispose`)**
+
   - Method ini digunakan untuk membersihkan `ScrollController` saat widget dihapus dari tree.
   - Mencegah kebocoran memori dengan memastikan controller tidak terus berjalan setelah widget tidak lagi digunakan.
+
+---
 
 ## Penjelasan Praktikum 2
 
