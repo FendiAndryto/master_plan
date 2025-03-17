@@ -90,3 +90,94 @@ Penjelasan mengenai hasil dari Langkah 9:
 - Kami telah membuat sebuah aplikasi pengelolaan tugas dengan state management menggunakan `InheritedNotifier` untuk menyediakan data `Plan` kepada widget-widget turunannya.
 - Dengan menggunakan `ValueListenableBuilder`, aplikasi akan merespons perubahan pada data dan memperbarui tampilan secara otomatis.
 - Kami juga telah menambahkan fitur untuk menghitung progress dari task yang diselesaikan dan menampilkannya di bagian bawah layar.
+
+---
+
+### Praktikum 3
+
+### Penjelasan Diagram Aplikasi berdasarkan Praktikum 3
+
+#### **Bagian 1: `MaterialApp`, `PlanProvider`, `PlanCreatorScreen`, dan Struktur UI**
+
+1. **MaterialApp**:
+
+   - `MaterialApp` adalah widget root dari aplikasi Flutter yang menyediakan berbagai konfigurasi untuk aplikasi Anda, seperti tema dan rute navigasi. Dalam konteks diagram ini, `MaterialApp` membungkus seluruh aplikasi dan menyediakan kerangka dasar yang digunakan oleh widget lain di aplikasi.
+
+2. **PlanProvider**:
+
+   - `PlanProvider` adalah widget yang menggunakan `InheritedNotifier` untuk menyediakan data berbentuk `ValueNotifier<List<Plan>>` ke seluruh bagian aplikasi. Ini memungkinkan widget anak (seperti `PlanScreen` dan `PlanCreatorScreen`) untuk mengakses dan memperbarui data rencana yang ada di dalam aplikasi tanpa harus menurunkan data secara manual ke setiap widget.
+
+3. **PlanCreatorScreen**:
+
+   - `PlanCreatorScreen` adalah layar tempat pengguna dapat menambah rencana baru. Pada layar ini terdapat elemen UI seperti `TextField` untuk memasukkan nama rencana baru dan tombol untuk menyimpan data tersebut ke dalam daftar rencana.
+
+4. **Column**:
+
+   - `Column` adalah widget layout yang memungkinkan Anda menyusun widget secara vertikal. Dalam diagram ini, `Column` digunakan untuk menampilkan beberapa widget secara vertikal seperti `TextField` (untuk memasukkan nama rencana) dan daftar rencana yang telah ada.
+
+5. **TextField**:
+
+   - `TextField` adalah widget input untuk menerima teks dari pengguna. Dalam `PlanCreatorScreen`, pengguna akan memasukkan nama rencana baru menggunakan `TextField`, dan setelah input selesai, aplikasi akan memperbarui daftar rencana dengan menambahkannya.
+
+6. **Expanded**:
+
+   - `Expanded` digunakan untuk memberi ruang secara proporsional pada widget di dalamnya. Dalam diagram ini, `Expanded` digunakan untuk membuat elemen-elemen dalam aplikasi (misalnya daftar rencana) menempati ruang yang tersisa di layar setelah widget lain (seperti `TextField` atau header) diposisikan.
+
+7. **ListView**:
+   - `ListView` digunakan untuk menampilkan daftar item yang dapat digulir. Dalam diagram ini, `ListView` digunakan untuk menampilkan daftar rencana yang ada. Pengguna dapat menggulir daftar ini jika ada banyak rencana yang ditambahkan.
+
+---
+
+#### **Bagian 2: `Navigator.push`, `PlanScreen`, `Scaffold`, `Column`, `SafeArea`, `ListView`, dan `Text`**
+
+1. **Navigator.push**:
+
+   - `Navigator.push` digunakan untuk menavigasi pengguna ke layar baru. Dalam hal ini, ketika pengguna menekan salah satu rencana di `PlanCreatorScreen`, aplikasi menggunakan `Navigator.push` untuk membuka `PlanScreen` dengan detail dari rencana tersebut.
+
+2. **MaterialApp**:
+
+   - `MaterialApp` juga digunakan pada `PlanScreen`, yang memberikan struktur dan tema material design untuk aplikasi.
+
+3. **PlanScreen**:
+
+   - `PlanScreen` adalah layar detail yang menampilkan informasi lebih lanjut mengenai rencana yang dipilih. Di sini, pengguna dapat melihat tugas-tugas terkait dengan rencana tersebut. `PlanScreen` menerima `Plan` yang dipilih melalui konstruktor dan menampilkan tugas yang ada.
+
+4. **Scaffold**:
+
+   - `Scaffold` adalah widget yang memberikan struktur dasar untuk layout aplikasi, seperti app bar, body, dan floating action button. Pada `PlanScreen`, `Scaffold` digunakan untuk membangun layout dasar layar detail.
+
+5. **Column**:
+
+   - `Column` digunakan untuk menyusun widget-widget lainnya secara vertikal dalam tampilan layar detail. Di dalamnya terdapat `Expanded`, `SafeArea`, dan `ListView` untuk menampilkan tugas-tugas rencana yang ada.
+
+6. **Expanded**:
+
+   - Sama seperti di `PlanCreatorScreen`, `Expanded` digunakan di `PlanScreen` untuk memberikan ruang bagi `ListView` untuk menampilkan tugas-tugas yang ada dalam rencana.
+
+7. **SafeArea**:
+
+   - `SafeArea` digunakan untuk memastikan bahwa konten tidak berada di area yang tertutup oleh elemen-elemen UI seperti status bar atau navbar pada perangkat. Di sini, `SafeArea` digunakan untuk menampilkan informasi yang terkait dengan progres rencana seperti pesan kelengkapan tugas (completeness message).
+
+8. **ListView**:
+
+   - `ListView` digunakan untuk menampilkan daftar tugas dalam sebuah rencana. Setiap tugas ditampilkan dengan checkbox dan deskripsi. Pengguna dapat menggulir daftar tugas ini jika ada banyak tugas.
+
+9. **Text**:
+   - `Text` digunakan untuk menampilkan informasi mengenai rencana atau tugas, seperti nama rencana atau pesan kelengkapan tugas.
+
+---
+
+### **Capture GIF Hasil dari Langkah 14**
+
+Berikut adalah penjelasan dari hasil capture GIF yang diambil pada Langkah 14.
+![GIF Langkah 9](./assets/praktikum3.gif)
+
+#### **Proses yang Tampil dalam GIF:**
+
+- **Menambah Rencana Baru**:
+  - Pengguna membuka `PlanCreatorScreen`, mengetikkan nama rencana baru di `TextField`, dan menekan tombol untuk menambahkan rencana baru ke dalam daftar.
+  - Rencana baru tersebut langsung ditambahkan ke dalam `ValueNotifier<List<Plan>>`, yang akan memicu pembaruan tampilan untuk menampilkan rencana yang baru saja ditambahkan.
+- **Melihat Daftar Rencana**:
+  - Setelah menambah rencana, daftar rencana yang ada di aplikasi akan diperbarui secara dinamis dan ditampilkan di bawah `TextField` menggunakan `ListView`.
+- **Navigasi ke `PlanScreen`**:
+  - Ketika pengguna memilih salah satu rencana dari daftar, aplikasi akan menavigasi pengguna ke `PlanScreen` untuk melihat detail dari rencana yang dipilih.
