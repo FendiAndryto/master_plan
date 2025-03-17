@@ -2,7 +2,10 @@
 
 ## Hasil Akhir Praktikum
 
-## Penjelasan Praktikum 1
+Berikut adalah hasil akhir dari praktikum dalam bentuk GIF:
+![GIF Hasil Praktikum](./assets/master_plan_demo.gif)
+
+## Penjelasan Praktikum
 
 Praktikum ini bertujuan untuk membuat aplikasi perencanaan tugas menggunakan Flutter.
 Aplikasi ini memungkinkan pengguna untuk menambahkan tugas, menandai tugas sebagai selesai, dan menggulir daftar tugas.
