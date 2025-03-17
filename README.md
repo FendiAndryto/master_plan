@@ -1,10 +1,5 @@
 # Dokumentasi Praktikum Master Plan
 
-## Hasil Akhir Praktikum
-
-Berikut adalah hasil akhir dari praktikum dalam bentuk GIF:
-![GIF Hasil Praktikum](./assets/master_plan_demo.gif)
-
 ## Penjelasan Praktikum
 
 Praktikum ini bertujuan untuk membuat aplikasi perencanaan tugas menggunakan Flutter.
